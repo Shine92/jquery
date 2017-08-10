@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="./js/jquery.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css" />
+</head>
+
+<body>
+    <div>
+        <div id="debug"></div>
+        <img src="./images/img01.jpg" id="imgData" width="50%" height="50%" />
+        <div id="alertMsg" class="alert alert-success">123</div>
+        <div id="htmlMsg"></div>
+        <label for="txt1">
+        input getValue:
+        <input type="text" id="txt1" name="txt1" value="txt1" />
+        </label>
+        <label for="txt2" id="labelText">
+        <input type="text" id="txt2" name="txt2"/>
+        </label>
+        <button type="button" id="btn1" name="btn1">inputValue</button>
+        <button type="button" id="btn2" name="btn2">emptyValue</button>
+    </div>
+    <div>
+        <p id="cssColor">css color change</p>
+    </div>
+    <script type="text/javascript">
+        // document.getElementById("debug").innerHTML = "Hello World";
+        var p = $("#imgData").prop("src");
+        /*.prop("屬性") 找出屬性的屬性值;當需要獲得設置checked 、selected、readonly 、disabled 
+        這些屬性時使用*/
+        $("#debug").text(p);
+        $(function() {
+            $("#alertMsg").prop("class", "alert alert-success");
+            /*.prop("屬性","屬性值"); 對元素加入屬性與屬性值*/
+        });
+        var r = $("#alertMsg").attr("class");
+        /*.attr("屬性"); 找出屬性的屬性值,但只有字串值*/
+        $("#alertMsg").text(r);
+        $("#htmlMsg").html("htmlMsg!");
+        /*.html("元素值"); 方法返回或设置被选元素的内容 (inner HTML)*/
+        var html = $("#htmlMsg").html();
+        /*.html("元素值"); 方法返回或设置被选元素的内容 (inner HTML)*/
+        alert(html);
+
+        $("#txt1").on("click", function() {
+            var txt11 = $("input[name='txt1']").val();
+            /*.val(); 取得元素的元素值*/
+            alert(txt11);
+        });
+
+        $("#btn1").on("click", function() {
+            $("#txt2").val("input value");
+            /*.val("元素"); 設置被選元素的元素內容*/
+        });
+        
+        $("#cssColor").css({"color":"green","font-size":"20px"});
+        /*.css("屬性","屬性值"); 設定被選元素的css樣式*/
+        /*.css({"屬性":屬性值,"屬性":屬性值}); */
+        
+        $("#btn2").on("click",function() {
+            alert("bt2 clicked!");
+            $("#txt2").prop("value","");
+            /*清空input的value值*/
+        });
+        
+        
+    </script>
+
+</body>
+
+</html>
